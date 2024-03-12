@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Delivery - Roren{% endblock %}
+{% block content %}
+
+        <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h5>Other</h5>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">Delivery Information</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <div class="delivery-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="delivery-wrapper">
+                            <br><br>
+                            <div class="delivery-desc"></div>
+                                <h3>DELIVERY INFORMATION</h3>
+                                
+                            </div>
+                            <p class="short_desc">At roren Auto Spares, we strive to provide a seamless and efficient delivery process for our customers.</p>
+                            <h5>Shipping Options</h5>
+                            <p>We offer various shipping options to meet your needs:</p>
+                                <ul>
+                                    <li><strong>Standard Shipping:</strong> Reliable and affordable, delivered within 5-7 business days.</li>
+                                    <li><strong>Express Shipping:</strong> Expedited delivery within 2-3 business days for urgent orders.</li>
+                                    <li><strong>International Shipping:</strong> We ship globally to reach our customers worldwide.</li>
+                                </ul>
+                            <br>
+                            <h5>Order Tracking</h5>
+                            <p class="short_desc">Once your order is dispatched, you will receive a tracking number via email. 
+                                Use this number to track your order in real-time and stay updated on its delivery status.</p>
+
+                            <h5>Shipping Costs</h5>
+                            <p class="short_desc">Shipping costs vary based on the chosen shipping method and destination. 
+                                The exact shipping cost will be calculated at checkout.</p>
+                            
+                            <h5>Free Shipping</h5>
+                            <p class="short_desc">We offer free standard shipping on orders over $100. 
+                                Take advantage of this offer and save on your delivery costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+{% endblock %}

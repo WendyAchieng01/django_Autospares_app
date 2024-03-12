@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Update Profile - Roren {% endblock %}
+{% block content %}
+
+        <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">Update User Profile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <div class="container">
+            <div class="row">
+                
+                    <div class="col-md-6 offset-md-3">
+                        <br>
+                        <form method="POST" action="{% url 'cart:update_user' %}">
+                            {% csrf_token %}
+
+                            {{ user_form.as_p }}
+                            <br><br>
+                            <button type="submit" class="btn btn-secondary">Update Profile</button>
+                        </form>
+                        <br><br>
+                        <a href="{% url 'cart:update_password' %}" class="btn btn-secondary">Update Password</a>
+                    </div>
+                
+            </div>
+        </div>
+<br><br><br><br><br><br><br><br><br><br>
+
+{% endblock %}

@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Accessories - Roren{% endblock %}
+{% block content %}
+
+        <!-- Begin Roren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Shop</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">Shop </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Roren's Breadcrumb Area End Here -->
+
+        <!-- Begin Roren's Shop Left Sidebar Area -->
+        <div class="shop-content_wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-5 order-2 order-lg-1 order-md-1">
+                        <div class="uren-sidebar-catagories_area">
+                            <div class="category-module uren-sidebar_categories">
+                                <div class="category-module_heading">
+                                    <h5>Accessories</h5>
+                                </div>
+                                <div class="module-body">
+                                    <ul class="module-list_item">
+                                        {% for accessory in accessories_list %}
+                                            <li><a href="{% url 'accessoriespage' accessory.id %}">{{ accessory.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        <div class="sidebar-banner_area">
+                            <div class="banner-item img-hover_effect">
+                                <a href="javascript:void(0)">
+                                    <img src="{% static 'images/shop/1.jpg' %}" alt="Roren's Shop Banner Image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">
+                        <div class="container my-5 text-center">
+                            <h1 class="mb-5" style="text-align: center;">{{ accessories.name }} Products</h1>
+                        </div>
+                
+                        <!-- Display Filtered Products -->
+                        <div class="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">
+                            <div class="shop-product-wrap grid gridview-3 img-hover-effect_area row">
+                                {% for prod in prods %}
+                                    {% if prod.offer %}
+                                    <div class="col-lg-4">
+                                        <div class="product-slide_item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="{% url 'singleproduct' prod.id %}">
+                                                            <img class="primary-img" src="{{prod.img.url}}" alt="Roren's Product Image">
+                                                        </a>
+                                                        {% if prod.offer %}
+                                                        <div class="sticker">
+                                                            <span class="sticker">Sale</span>
+                                                        </div>
+                                                        {% endif %}
+                                                        <div class="add-actions">
+                                                            <ul>
+                                                                <li><a class="" href="{% url 'singleproduct' prod.id %}" data-toggle="tooltip" data-placement="top" title="View Product">
+                                                                    <i class="ion-android-open"></i>
+                                                                </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="product-desc_info">
+                                                            <div class="d-flex justify-content-center  text-warning mb-2">
+                                                                <div class="bi-star-fill"><i class="ion-android-star"></i></div>
+                                                                &nbsp;&nbsp;Special Offer!&nbsp;&nbsp;
+                                                                <div class="bi-star-fill"><i class="ion-android-star"></i></div>
+                                                            </div>
+                                                            <h6><a class="product-name" href="{% url 'singleproduct' prod.id %}">{{prod.name}}</a></h6>
+                                                            <div class="price-box">
+                                                                <span class="new-price">Ksh. <strike>{{prod.price}}</strike>  &nbsp; Ksh.{{prod.sale_price}}</span>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-slide_item">
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="{% url 'singleproduct' prod.id %}">
+                                                        <img class="primary-img" src="{{prod.img.url}}" alt="Roren's Product Image">
+                                                        {% if prod.offer %}
+                                                        <div class="sticker">
+                                                            <span class="sticker">Sale</span>
+                                                        </div>
+                                                        {% endif %}
+                                                    </a>
+                                                    
+                                                </div>
+                                                <div class="product-content">
+                                                    <div class="product-desc_info">
+                                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                                            <div class="bi-star-fill"><i class="ion-android-star"></i></div>
+                                                            &nbsp;&nbsp;Special Offer!&nbsp;&nbsp;
+                                                            <div class="bi-star-fill"><i class="ion-android-star"></i></div>
+                                                        </div>
+                                                        <h6><a class="product-name" href="{% url 'singleproduct' prod.id %}">{{prod.name}}</a></h6>
+                                                        <br>ID: {{ prod.id }}
+                                                        <div class="price-box">
+                                                            <span class="new-price">Ksh. <strike>{{prod.price}}</strike>  &nbsp; Ksh.{{prod.sale_price}}</span>
+                                                        </div>
+                                                        <div class="product-short_desc">
+                                                            <p>{{prod.desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li><a class="" href="{% url 'singleproduct' prod.id %}" data-toggle="tooltip" data-placement="top" title="View Product">
+                                                                <i class="ion-android-open"></i>
+                                                            </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-lg-4">
+                                        <div class="product-slide_item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="{% url 'singleproduct' prod.id %}">
+                                                            <img class="primary-img" src="{{prod.img.url}}" alt="Roren's Product Image">
+                                                        </a>
+                                                        <div class="add-actions">
+                                                            <ul>
+                                                                <li><a class="" href="{% url 'singleproduct' prod.id %}" data-toggle="tooltip" data-placement="top" title="View Product">
+                                                                    <i class="ion-android-open"></i>
+                                                                </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="product-desc_info">
+                                                            <h6><a class="product-name" href="{% url 'singleproduct' prod.id %}">{{prod.name}}</a></h6>
+                                                            <div class="price-box">
+                                                                <span class="new-price">Ksh. {{prod.price}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-slide_item">
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="{% url 'singleproduct' prod.id %}">
+                                                        <img class="primary-img" src="{{prod.img.url}}" alt="Roren's Product Image">
+                                                </div>
+                                                <div class="product-content">
+                                                    <div class="product-desc_info">
+                                                        <h6><a class="product-name" href="{% url 'singleproduct' prod.id %}">{{prod.name}}</a></h6>
+                                                        <div class="price-box">
+                                                            <span class="new-price">Ksh. {{prod.price}}</span>
+                                                        </div>
+                                                        <div class="product-short_desc">
+                                                            <p>{{prod.desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li><a class="" href="{% url 'singleproduct' prod.id %}" data-toggle="tooltip" data-placement="top" title="View Product">
+                                                                <i class="ion-android-open"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>  
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </div>
+               
+            
+                
+
+
+{% endblock %}

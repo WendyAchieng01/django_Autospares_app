@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+{% block title %}Checkout - Roren{% endblock %}
+{% block content %}
+
+<style>
+    .steps-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .step {
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        background-color: #f2f2f2;
+        color: #999;
+      }
+      
+      .step.active {
+        background-color: #ffffff;
+        color: #e52e06;
+      }
+      
+      .step-icon {
+        margin-right: 10px;
+        font-size: 18px;
+      }
+      
+      .step-label {
+        font-size: 16px;
+      }
+</style>
+
+        <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+
+        <div class="steps-container">
+            <div class="step active">
+              <span class="step-icon">&#10003;</span>
+              <span class="step-label">Shipping</span>
+            </div>
+            <div class="step">
+              <span class="step-icon">&#10003;</span>
+              <span class="step-label">Review & Payments</span>
+            </div>
+          </div>
+
+        <!-- Begin Uren's Checkout Area -->
+        <div class="checkout-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        {% if submitted %}
+                            <p>Your information was submitted successfully.</p>
+                            <!-- Display the submitted information -->
+                            
+                            <div>
+                                <p><strong>First Name:</strong> {{ form.cleaned_data.firstname }}</p>
+                                <p><strong>Last Name:</strong> {{ form.cleaned_data.lastname }}</p>
+                                <p><strong>Address:</strong> {{ form.cleaned_data.address }}</p>
+                                <p><strong>City:</strong> {{ form.cleaned_data.city }}</p>
+                                <p><strong>County:</strong> {{ form.cleaned_data.county }}</p>
+                                <p><strong>Zipcode:</strong> {{ form.cleaned_data.zipcode }}</p>
+                                <p><strong>Email:</strong> {{ form.cleaned_data.email }}</p>
+                                <p><strong>Phone Number:</strong> {{ form.cleaned_data.phonenumber }}</p>
+                                <p><strong>Order Notes:</strong> {{ form.cleaned_data.note }}</p>
+                            </div>
+                            
+                        {% else %}
+                            <form method="post" action="{% url 'cart:checkout' %}">
+                                {% csrf_token %}
+                                <div class="checkbox-form">
+                                    <h3>Billing Details</h3>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="">
+                                                <h4>Ship To</h4>
+                                                <p>Complete the form below to provide the address to which your order will be delivered.</p>
+                                                <br><br>
+                                            </div>
+                                        </div>
+                
+                                        {{ form.as_p }}
+                
+                                        <div class="order-button-payment">
+                                            <input name="submit" value="Place order" type="submit">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        {% endif %}
+                
+                        
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="your-order">
+                            <h3>Your order</h3>
+                            <div class="your-order-table table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="cart-product-name">Product</th>
+                                            <th class="cart-product-total">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in checkout_data.cart_items %}
+                                            <tr class="cart_item">
+                                                <td class="cart-product-name"> {{ item.name }} <strong class="product-quantity"> × {{ item.quantity }}</strong></td>
+                                                <td class="cart-product-total"><span class="amount">{{ item.total }}</span></td>
+                                            </tr>
+                                        {% empty %}
+                                            <tr><td colspan="4">No items in the cart.</td></tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="cart-subtotal">
+                                            <th>Cart Subtotal</th>
+                                            <td><span class="amount">Ksh. {{ checkout_data.total }}</span></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div> 
+                            <div class="payment-method">
+                                <div class="payment-accordion">
+                                    <div id="accordion">
+                                        <div class="card">
+                                            <div class="card-header" id="#payment-1">
+                                                <h5 class="panel-title">
+                                                    <a href="javascript:void(0)" class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        M-Pesa
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <p>Make your payment through your M-Pesa account. This can either
+                                                        be through the Buy Goods And Services Till number or You input 
+                                                        your M-Pesa number and a prompt to pay will be sent to the number. 
+                                                        Your order won’t be shipped until the funds have cleared in
+                                                        our account.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Checkout Area End Here -->
+        
+        
+        
+{% endblock %}
+

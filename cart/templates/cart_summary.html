@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+{% block title %}Cart - Roren{% endblock %}
+{% block content %}
+
+
+<!-- Begin Roren's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li class="active">Shopping Cart </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Roren's Breadcrumb Area End Here -->
+
+<div class="uren-cart-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                {% if cart_products %}
+                <form action="">
+
+                    {% csrf_token %}
+                    <div class="table-content table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="uren-product-remove">remove</th>
+                                    <th class="uren-product-thumbnail">images</th>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="uren-product-price">Unit Price</th>
+                                    <th class="uren-product-quantity">Quantity</th>
+                                    <th class="uren-product-quantity">Update Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in cart_products %}
+                                <tr>
+                                    <td class="uren-product-remove">
+                                        <button type="button" data-index="{{product.id}}" 
+                                        class="btn btn-secondary delete-product"><i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                    <td class="uren-product-thumbnail"><a href=""><img src="{{ product.img.url }}" alt="Uren's Cart Thumbnail"></a></td>
+                                    <td class="uren-product-name"><a href=>{{ product.name }}</a></td>
+                                    <td class="uren-product-price">
+                                        {% if product.offer %}
+                                        <span class="new-price"> Ksh. {{product.sale_price}}</span>
+                                        {% else %}
+                                        <span class="amount">Ksh. {{ product.price }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="quantity">
+                                        <select class="form-select form-select-sm" id="select{{product.id}}" >
+                                            <option selected>
+                                            {% for key, value in quantities.items %}
+                                                {% if key == product.id|slugify %}
+                                                    {{ value }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </td>
+                                    
+                                    <td class="uren-product-quantiy-update"><button type="button" data-index="{{product.id}}" 
+                                        class="btn btn-secondary update-cart">Update</button></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 ml-auto">
+                            <div class="cart-page-total">
+                                <h2>Cart totals</h2>
+                                <ul>
+                                    <li>Total <span>{{ totals }}</span></li>
+                                </ul>
+                                <a href="{% url 'cart:checkout' %}">Proceed to checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            {% else %}
+            <div>
+                <center>
+                    <h5>There's Nothing in Your Cart...</h5>
+
+                    <a href="{% url 'shop' %}">Continue Shopping</a></h5>
+                </center>
+            </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var cartUpdateUrl = "{% url 'cart:cart_update' %}";
+    console.log("Cart Update URL:", cartUpdateUrl);
+
+    var cartDeleteUrl = "{% url 'cart:cart_delete' %}";
+    console.log("Cart Delete URL:", cartDeleteUrl);
+</script>
+
+<script>
+    //Update Cart
+    $(document).on('click', '.update-cart', function(e) {
+        e.preventDefault();
+        //grab the product id
+        var productid = $(this).data('index');
+    
+        // Get the quantity value
+        var product_qty = parseInt($('select[id="select' + productid + '"]').val());
+    
+        if (!product_qty) {
+            // If no quantity is selected, do not send the AJAX request.
+            return;
+        }
+    
+        $.ajax({
+            type: 'POST',
+            url: cartUpdateUrl,
+            data: {
+                product_id: productid,
+                product_qty: product_qty,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+    
+            success: function(json) {
+                //console.log(json);
+                //document.getElementById("cart_quantity").textContent = json.qty
+                location.reload()
+            },
+    
+            error: function(xhr, errmsg, err) {
+    
+            }
+        });
+    });
+
+    //Delete Item from cart
+    $(document).on('click', '.delete-product', function(e) {
+        e.preventDefault();
+        //grab the product id
+        var productid = $(this).data('index');
+    
+        $.ajax({
+            type: 'POST',
+            url: cartDeleteUrl,
+            data: {
+                product_id: productid,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+    
+            success: function(json) {
+                //console.log(json);
+                //document.getElementById("cart_quantity").textContent = json.qty
+                location.reload()
+            },
+    
+            error: function(xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+            }
+        });
+    });
+</script>
+
+{% endblock %}

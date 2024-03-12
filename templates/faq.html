@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}FAQ - Roren{% endblock %}
+{% block content %}
+        <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">FAQ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <!-- Begin Uren's Frequently Area -->
+        <div class="frequently-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="frequently-content">
+                            <div class="frequently-desc">
+                                <h3>Below are frequently asked questions, you may find the answer for yourself</h3>
+                                <p>Welcome to our Frequently Asked Questions (FAQ) page, 
+                                    designed to address your queries and provide comprehensive information 
+                                    about our Roren Auto Spares Website. Explore this page to find detailed 
+                                    answers to common inquiries, covering topics such as product compatibility, 
+                                    warranties, returns, and more. If you can't find the information you need, 
+                                    our dedicated customer support team is just a message away, ready to 
+                                    assist you in making informed decisions for a seamless and satisfying 
+                                    shopping experience.</p>
+                            </div>
+                        </div>
+                        <!-- Begin Frequently Accordin -->
+                        <div class="frequently-accordion">
+                            <div id="accordion">
+                                <div class="card actives">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                How can I find the right auto parts for my vehicle?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Utilize our user-friendly search feature by entering 
+                                            your vehicle's make, model, and year. Our extensive 
+                                            catalog ensures you get accurate results, 
+                                            making it easy to find the perfect fit for your car.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Are your auto parts genuine or aftermarket?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Our inventory includes both genuine OEM parts and high-quality 
+                                            aftermarket alternatives. Each product's description provides 
+                                            clarity on its origin, empowering you to make an informed 
+                                            decision based on your preferences and budget.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                How do I track my order after making a purchase?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Once your order is processed and shipped, you'll receive a confirmation 
+                                            email containing a tracking number. Use this number on our website or 
+                                            the carrier's platform to monitor the real-time status and expected 
+                                            delivery date of your order.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingFour">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                What payment methods do you accept for auto parts purchases?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                        <div class="card-body">
+                                            We accept secure payments through various methods, including major 
+                                            credit cards, PayPal, and other reputable online payment options. 
+                                            Rest assured, your financial information is encrypted to ensure a 
+                                            safe and smooth transaction.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingFive">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                Do you provide installation services for the purchased auto parts?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Currently, we don't offer installation services. We recommend consulting 
+                                            a certified mechanic for precise and safe installation, ensuring your 
+                                            purchased auto parts function optimally and maintain the integrity of 
+                                            your vehicle.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingSix">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                                How can I get assistance if I have a technical question about a specific auto part?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Our knowledgeable customer support team is just a call or email away. 
+                                            Reach out for expert guidance on any technical inquiries, and we'll 
+                                            provide detailed information to help you make informed decisions about 
+                                            your auto parts purchase.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingSeven">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                                What steps should I take if my auto part arrives damaged or defective?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                                        <div class="card-body">
+                                            We apologize for any inconvenience. If your auto part arrives damaged or
+                                             defective, please contact our customer support immediately. 
+                                             Provide photos of the damage, and we'll promptly initiate a replacement 
+                                             or refund, ensuring your satisfaction with our products and service. 
+                                             Refer to our Returns page for more information on damaged or defective
+                                              items.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingEight">
+                                        <h5 class="mb-0">
+                                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                                Can I get help with finding compatible accessories or add-ons for the auto part I'm purchasing?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Absolutely! Our customer support team is ready to assist you in 
+                                            identifying suitable accessories or complementary components for 
+                                            your chosen auto part. Whether it's performance enhancements, 
+                                            installation kits, or maintenance tools, we can provide recommendations 
+                                            to enhance your driving experience.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Frequently Accordin End Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Frequently Area End Here -->
+        
+
+{% endblock %}

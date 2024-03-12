@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Register - Roren {% endblock %}
+{% block content %}
+
+        <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">Register</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <br>
+                    <form method="POST" action="{% url 'cart:register' %}">
+                        {% csrf_token %}
+                        
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <strong>Whoops! There was a Problem Registering. Please Try Again:</strong>
+                                <ul>
+                                    {% for field, errors in form.errors.items %}
+                                        {% for error in errors %}
+                                            <li>{{ field }}: {{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        {{ form.as_p }}
+                        <br><br>
+                        <button type="submit" class="btn btn-secondary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+<br><br><br><br><br><br><br><br><br><br>
+        
+{% endblock %}

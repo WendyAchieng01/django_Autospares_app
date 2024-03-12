@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Login - Roren {% endblock %}
+{% block content %}
+
+        <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">Login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <div class="container">
+            <div class="row">
+                <center>
+                    <div class="col-md-12">
+                        <br>
+                        <form method="POST" action="{% url 'cart:login' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                            
+                            <input type="text" class="form-control" name="username" placeholder="Enter Your Username">
+
+                            </div>
+                            <div class="mb-3">
+                            
+                            <input type="password" class="form-control" name="password" placeholder="Enter Your Password">
+                            </div>
+                            <br><br>
+                            <button type="submit" class="btn btn-secondary">Login</button>
+                        </form>
+                        <div>
+                            <h5>Don't have an account?
+                                <a href="{% url 'cart:register' %}">Create One</a></h5>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>   
+<br><br><br><br><br><br><br><br>
+{% endblock %}

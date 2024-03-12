@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}About - Roren{% endblock %}
+{% block content %}
+
+        <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">About Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+        <!-- Begin Uren's About Us Area -->
+        <div class="about-us-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-5">
+                        <div class="overview-img text-center img-hover_effect">
+                            <a href="#">
+                                <img class="img-full" src="{% static 'images/about-us/1.jpg' %}" alt="Uren's About Us Image">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-7 d-flex align-items-center">
+                        <div class="overview-content">
+                            <h2>Welcome To <span>Roren's</span> Store!</h2>
+                            <p class="short_desc">Revamp your ride with ease at our one-stop auto parts emporium! 
+                                From engines to accessories, discover a vast selection tailored to fuel 
+                                your passion for performance. Drive into convenience with swift shipping and expert support, 
+                                ensuring your vehicle stays road-ready, every mile of the way.</p>
+                            <div class="uren-about-us_btn-area">
+                                <a class="about-us_btn" href="shop-left-sidebar.html">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's About Us Area End Here -->
+
+        <!-- Begin Uren's Project Countdown Area -->
+        <div class="project-count-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-count text-center">
+                            <div class="count-icon">
+                                <span class="ion-ios-briefcase-outline"></span>
+                            </div>
+                            <div class="count-title">
+                                <h2 class="count">2169</h2>
+                                <span>Projects Done</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-count text-center">
+                            <div class="count-icon">
+                                <span class="ion-ios-wineglass-outline"></span>
+                            </div>
+                            <div class="count-title">
+                                <h2 class="count">869</h2>
+                                <span>Awards Winned</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-count text-center">
+                            <div class="count-icon">
+                                <span class="ion-ios-lightbulb-outline"></span>
+                            </div>
+                            <div class="count-title">
+                                <h2 class="count">689</h2>
+                                <span>Hours Worked</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-count text-center">
+                            <div class="count-icon">
+                                <span class="ion-happy-outline"></span>
+                            </div>
+                            <div class="count-title">
+                                <h2 class="count">2169</h2>
+                                <span>Happy Customers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Project Countdown Area End Here -->
+
+        <!-- Begin Uren's Team Area -->
+        <div class="team-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section_title-2">
+                            <h3>Our Team</h3>
+                        </div>
+                    </div>
+                </div> <!-- section title end -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="team-member">
+                            <div class="team-thumb img-hover_effect">
+                                <a href="#">
+                                    <img src="{% static 'images/about-us/team/1.jpg' %}" alt="Our Team Member">
+                                </a>
+                            </div>
+                            <div class="team-content text-center">
+                                <h3>Renson Duke Wafula</h3>
+                                <p>Chairman</p>
+                                <a href="#">dwafula120@gmail.com</a>
+                            </div>
+                        </div>
+                    </div> <!-- end single team member -->
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="team-member">
+                            <div class="team-thumb img-hover_effect">
+                                <a href="#">
+                                    <img src="{% static 'images/about-us/team/2.jpg' %}" alt="Our Team Member">
+                                </a>
+                            </div>
+                            <div class="team-content text-center">
+                                <h3>Noah  Cheruiyot</h3>
+                                <p>Head of Operations</p>
+                                <a href="#">rorenautomotors@gmail.com</a>
+                            </div>
+                        </div>
+                    </div> <!-- end single team member -->
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="team-member">
+                            <div class="team-thumb img-hover_effect">
+                                <a href="#">
+                                    <img src="{% static 'images/about-us/team/3.jpg' %}" alt="Our Team Member">
+                                </a>
+                            </div>
+                            <div class="team-content text-center">
+                                <h3>Eliud Simiyu Nafula</h3>
+                                <p>International Correspondant</p>
+                                <a href="javascript:void(0)">ezzynafula@gmail.com </a>
+                            </div>
+                        </div>
+                    </div> <!-- end single team member -->
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="team-member">
+                            <div class="team-thumb img-hover_effect">
+                                <a href="#">
+                                    <img src="{% static 'images/about-us/team/4.jpg' %}" alt="Our Team Member">
+                                </a>
+                            </div>
+                            <div class="team-content text-center">
+                                <h3>Wendy Mudenyo</h3>
+                                <p>IT Expert</p>
+                                <a href="#">wendyachieng98@gmail.com</a>
+                            </div>
+                        </div>
+                    </div> <!-- end single team member -->
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Team Area End Here -->
+
+{% endblock %}

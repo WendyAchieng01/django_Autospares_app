@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+        <div class="uren-slider_area uren-slider_area-3">
+            <div class="main-slider slider-navigation_style-2">
+                <!-- Begin Single Slide Area -->
+                <div class="single-slide animation-style-01 bg-1" style="background-image: url(/static/images/slider/bg-1.jpg)">
+                    <div class="slider-content">
+                        <span class="carlet-text_color">Save $120 when you buy</span>
+                        <h3>Wheels &amp; Tires</h3>
+                        <p class="short-desc">Upgrade your journey with our premium selection, where quality meets affordability</p>
+                        <div class="uren-btn-ps_center slide-btn">
+                            <a class="uren-btn" href="{% url 'shop' %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Slide Area End Here -->
+                <!-- Begin Single Slide Area -->
+                <div class="single-slide animation-style-02 bg-2" style="background-image: url(/static/images/slider/bg-2.jpg)">
+                    <div class="slider-content slider-content-2">
+                        <span class="carlet-text_color">We have the part you need</span>
+                        <h3>20% off Auto part</h3>
+                        <p class="short-desc">Drive in style, save in abundance – because your car deserves the best, and so does your wallet. </p>
+                        <div class="uren-btn-ps_center slide-btn">
+                            <a class="uren-btn" href="{% url 'shop' %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Begin Uren's Shipping Area -->
+        <div class="uren-shipping_area">
+            <div class="container-fluid">
+                <div class="shipping-nav">
+                    <div class="row no-gutters">
+                        <div class="shipping-grid">
+                            <div class="shipping-item">
+                                <div class="shipping-icon">
+                                    <i class="ion-ios-paperplane-outline"></i>
+                                </div>
+                                <div class="shipping-content">
+                                    <h6>Free Shipping</h6>
+                                    <p>Free shipping on all Nairobi orders</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shipping-grid">
+                            <div class="shipping-item">
+                                <div class="shipping-icon">
+                                    <i class="ion-ios-help-outline"></i>
+                                </div>
+                                <div class="shipping-content">
+                                    <h6>Support 24/7</h6>
+                                    <p>Contact us 24 hours a day</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shipping-grid">
+                            <div class="shipping-item">
+                                <div class="shipping-icon">
+                                    <i class="ion-ios-refresh-empty"></i>
+                                </div>
+                                <div class="shipping-content">
+                                    <h6>Amazing Service</h6>
+                                    <p>we deliver an unparalleled experience tailored to your needs</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shipping-grid">
+                            <div class="shipping-item">
+                                <div class="shipping-icon">
+                                    <i class="ion-ios-undo-outline"></i>
+                                </div>
+                                <div class="shipping-content">
+                                    <h6>Expert Advice</h6>
+                                    <p>We're passionate about vehicles</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shipping-grid">
+                            <div class="shipping-item">
+                                <div class="shipping-icon">
+                                    <i class="ion-ios-locked-outline"></i>
+                                </div>
+                                <div class="shipping-content last-child">
+                                    <h6>Payment Secure</h6>
+                                    <p>We ensure secure payment</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Shipping Area End Here -->
+
+        <!-- Begin Featured Categories Area -->
+        <div class="featured-categories_area featured-categories_area-2">
+            <div class="container-fluid">
+                <div class="section-title_area">
+                    <span>Top Featured Collections</span>
+                    <h3>Featured Categories</h3>
+                </div>
+                <div class="slideshow">
+                    <table>
+                        <tbody>
+                            <tr>
+                                {% for cat in categories %}
+                                    {% if forloop.counter <= 6 %}
+                                        <td>
+                                            <div class="slide-image_area">
+                                                <a href="{% url 'categorypage' category_id=cat.id %}">
+                                                    <img src="{{cat.img.url}}" alt="{{ cat.name }} Image">
+                                                </a>
+                                            </div>
+                                            <div class="slide-content_area">
+                                                <h3><a href="{% url 'categorypage' category_id=cat.id %}">{{ cat.name }}</a></h3>
+                                                <span>({{ cat.product_count }} Products)</span>
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                {% for cat in categories %}
+                                    {% if forloop.counter > 6 and forloop.counter <= 12 %}
+                                        <td>
+                                            <div class="slide-image_area">
+                                                <a href="{% url 'categorypage' category_id=cat.id %}">
+                                                    <img src="{{cat.img.url}}" alt="{{ cat.name }} Image">
+                                                </a>
+                                            </div>
+                                            <div class="slide-content_area">
+                                                <h3><a href="{% url 'categorypage' category_id=cat.id %}">{{ cat.name }}</a></h3>
+                                                <span>({{ cat.product_count }} Products)</span>
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Featured Categories Area End Here -->
+
+       
+
+        <!-- Begin Uren's Banner Area -->
+        <div class="uren-banner_area bg--white_smoke">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="banner-item img-hover_effect">
+                            <div class="banner-img-1" style="background-image: url(/static/images/banner/1-1.jpg)"></div>
+                            <div class="banner-content">
+                                <span class="offer">Get discounts on your car parts</span>
+                                <h4>Save Big, Drive Bold</h4>
+                                <p> Enjoy substantial discounts on your auto spares purchase, 
+                                    because upgrading your car shouldn't come at the cost of your wallet.</p>
+                                <div class="uren-btn-ps_left">
+                                    <a class="uren-btn" href="{% url 'shop' %}">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="banner-item img-hover_effect">
+                            <div class="banner-img-1 banner-img-2"style="background-image: url(/static/images/banner/1-2.jpg)"> </div>
+                            <div class="banner-content">
+                                <span class="offer">Ignite your vehicle's performance and aesthetics</span>
+                                <h4>Unleash Your Ride's Potential </h4>
+                                <p>Elevate your driving experience with our premium selection of wheels and tires, 
+                                    designed to transform your vehicle into a true masterpiece.</p>
+                                <div class="uren-btn-ps_left">
+                                    <a class="uren-btn" href="{% url 'shop' %}">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Banner Area End Here -->
+
+        <!-- Begin Uren's Testimonial Area -->
+        <div class="testimonial-area" style="background-image: url(/static/images/testimonial/bg-1.gif)">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" >
+                        <div class="testimonial-slider uren-slick-slider slider-navigation_style-1" data-slick-options='{
+                        "slidesToShow": 1,
+                        "arrows" : true
+                       }' data-slick-responsive='[
+                                             {"breakpoint":768, "settings": {"slidesToShow": 1}},
+                                             {"breakpoint":577, "settings": {"slidesToShow": 1}},
+                                             {"breakpoint":481, "settings": {"slidesToShow": 1}},
+                                             {"breakpoint":321, "settings": {"slidesToShow": 1}}
+                                         ]'>
+                            <div class="slide-item">
+                                <div class="slide-inner">
+                                    <div class="single-slide">
+                                        <div class="slide-content">
+                                            <span class="primary-text_color">What’s Client Says</span>
+                                            <h3 class="user-name">John Mugo</h3>
+                                            <div class="comment-box">
+                                                <p class="user-feedback">“ I can't praise Roren Auto Spares enough! The staff went above and beyond to help me find the right parts for my car. They were knowledgeable, friendly, and the prices were unbeatable. A truly excellent experience!”</p>
+                                            </div>
+                                        </div>
+                                        <div class="slide-image">
+                                            <a href="javascript:void(0)">
+                                                <img src="{% static 'images/testimonial/user/pic.jpg' %}" alt="Uren's Testimonial Image">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-item">
+                                <div class="slide-inner">
+                                    <div class="single-slide">
+                                        <div class="slide-content">
+                                            <span class="primary-text_color">What’s Client Says</span>
+                                            <h3 class="user-name">Emily Atieno</h3>
+                                            <div class="comment-box">
+                                                <p class="user-feedback">“ Five stars all the way! The attention to detail and the level of customer service I received when ordering parts for my SUV were exceptional. They helped me find the best deals and ensured that I got the right parts for my vehicle. Will definitely be my go-to place for car parts ”</p>
+                                            </div>
+                                        </div>
+                                        <div class="slide-image">
+                                            <a href="javascript:void(0)">
+                                                <img src="{% static 'images/testimonial/user/pic.jpg' %}" alt="Uren's Testimonial Image">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-item">
+                                <div class="slide-inner">
+                                    <div class="single-slide">
+                                        <div class="slide-content">
+                                            <span class="primary-text_color">What’s Client Says</span>
+                                            <h3 class="user-name">Carl Jerry</h3>
+                                            <div class="comment-box">
+                                                <p class="user-feedback">“ This car spare parts service is a game-changer! The website is user-friendly, the prices are competitive, and the delivery was prompt. I had a small issue with one of the parts, and their customer service team resolved it swiftly and efficiently. Highly recommended ”</p>
+                                            </div>
+                                        </div>
+                                        <div class="slide-image">
+                                            <a href="javascript:void(0)">
+                                                <img src="{% static 'images/testimonial/user/pic.jpg' %}" alt="Uren's Testimonial Image">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Testimonial Area End Here -->
+
+        <!-- Begin Uren's Brand Area -->
+        <div class="uren-brand_area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title_area">
+                            <span>Top Quality Partner</span>
+                            <h3>Shop By Brands</h3>
+                        </div>
+                        <div class="product-slider uren-slick-slider slider-navigation_style-1 img-hover-effect_area" data-slick-options='{
+                            "slidesToShow": 6,
+                            "arrows" : true
+                            }' data-slick-responsive='[
+                                                    {"breakpoint":1501, "settings": {"slidesToShow": 4}},
+                                                    {"breakpoint":1200, "settings": {"slidesToShow": 3}},
+                                                    {"breakpoint":992, "settings": {"slidesToShow": 2}},
+                                                    {"breakpoint":767, "settings": {"slidesToShow": 1}},
+                                                    {"breakpoint":480, "settings": {"slidesToShow": 1}}
+                                                ]'>
+                            {% for bra in brands %}
+                            <div class="slide-item">
+                                <div class="inner-slide">
+                                    <div class="slide-image_area">
+                                        <a href="{% url 'brandpage' brand_id=bra.id %}">
+                                            <img src="{{bra.img.url}}" alt="{{ bra.name }} Image">
+                                        </a>
+                                    </div>
+                                    <div class="slide-content_area">
+                                        <h3><a href="{% url 'brandpage' brand_id=bra.id %}">{{ bra.name }}</a></h3>
+                                        <span>({{ bra.product_count }} Products)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Roren's Brand Area End Here -->
+
+       
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+{% block title %}Checkout - Roren{% endblock %}
+{% block content %}
+
+<style>
+    .steps-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .step {
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        background-color: #f2f2f2;
+        color: #999;
+      }
+      
+      .step.active {
+        background-color: #ffffff;
+        color: #e52e06;
+      }
+      
+      .step-icon {
+        margin-right: 10px;
+        font-size: 18px;
+      }
+      
+      .step-label {
+        font-size: 16px;
+      }
+</style>
+
+        <!-- Begin Uren's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Other</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active">Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Uren's Breadcrumb Area End Here -->
+
+        <div class="steps-container">
+            <div class="step">
+              <span class="step-icon">&#10003;</span>
+              <span class="step-label">Shipping</span>
+            </div>
+            <div class="step active">
+              <span class="step-icon">&#10003;</span>
+              <span class="step-label">Review & Payments</span>
+            </div>
+          </div>
+
+          
+<h1>Payment Successful</h1>
+<p>Thank you for your payment!</p>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+{% block title %}Reviews & Payments - Roren{% endblock %}
+{% block content %}
+<style>
+    #paymentInfo {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    h2 {
+        text-align: center;
+        color: #000;
+    }
+
+    p {
+        margin: 10px 0;
+    }
+
+    strong {
+        color: #2c3e50;
+    }
+    #inputFieldsContainer {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    #inputFieldsContainer label {
+        margin-bottom: 5px;
+        color: #333333;
+    }
+
+    #submitButton {
+        margin-top: 10px;
+        background-color: #8CC63F;
+        color: #F8F9F9;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #submitButton:hover {
+        background-color: #7AA23B;
+    }
+
+    #openFormButton {
+        border: none;
+        border-radius: 10px;
+        width: 300px;
+        height: 50px;
+        background-color: #8CC63F;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .steps-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .step {
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        background-color: #f2f2f2;
+        color: #999;
+      }
+      
+      .step.active {
+        background-color: #ffffff;
+        color: #e52e06;
+      }
+      
+      .step-icon {
+        margin-right: 10px;
+        font-size: 18px;
+      }
+      
+      .step-label {
+        font-size: 16px;
+      }
+</style>
+
+<!-- Begin Uren's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Other</h2>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li class="active">Checkout</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Uren's Breadcrumb Area End Here -->
+
+<div class="steps-container">
+    <div class="step">
+      <span class="step-icon">&#10003;</span>
+      <span class="step-label">Shipping</span>
+    </div>
+    <div class="step active">
+      <span class="step-icon">&#10003;</span>
+      <span class="step-label">Review & Payments</span>
+    </div>
+  </div>
+
+<div class="checkout-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <h2>Order Confirmation</h2>
+                <div id="paymentInfo">
+                    <!-- Your payment information content here -->
+                    <h3>Your Information</h3>
+                    <p><strong>{{ submitted_data.firstname }} {{ submitted_data.lastname }} , </strong> </p>
+                    <p><strong>{{ submitted_data.email }}</strong> </p>
+                    <p><strong>{{ submitted_data.phonenumber }}</strong> </p>
+                </div>
+                <div id="paymentInfo">
+                    <!-- Your payment information content here -->
+                    <h3>Shipping Address</h3>
+                    <p><strong>{{ submitted_data.address }}</strong> </p>
+                    <p><strong>{{ submitted_data.city }}, {{ submitted_data.county }}</strong></p>
+                    <p><strong>{{ submitted_data.zipcode }}</strong> </p>
+                    <p><strong>{{ submitted_data.phonenumber }}</strong> </p>
+                    <p><strong>{{ submitted_data.note }}</strong> </p>
+                </div>
+                <div class="payment-method">
+                    <h3>Payment Method</h3>
+                    <div class="payment-option">
+                        <img src="{% static 'images/mpesa/mpesa.png' %}" alt="M-Pesa">
+                        <div style="margin-bottom: 20px;">
+                            <button id="openFormButton">Pay with M-Pesa</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="formContainer" style="display: none;">
+                    <form id="paymentForm">
+                        <div id="inputFieldsContainer">
+                            <!-- Your form fields and labels here -->
+                            <label for="inputField1">Amount:</label>
+                            <input type="text" id="inputField1"  value="{{ checkout_data.total }}" readonly />
+            
+                            <label for="inputField2">Phone Number:</label>
+                            <input type="text" id="inputField2" value="{{ submitted_data.phonenumber }}" pattern="[0-9]{10,}" title="Please enter a valid phone number (at least 10 digits)" required />
+            
+                            <p>We will send an Mpesa Payment request to this number.</p>
+            
+                            <button type="submit" id="submitButton">Pay</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="your-order">
+                    <!-- Your order content here -->
+                    <h3>Your order</h3>
+                    <div class="your-order-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="cart-product-total">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in checkout_data.cart_items %}
+                                    <tr class="cart_item">
+                                        <td class="cart-product-name"> {{ item.name }} <strong class="product-quantity"> × {{ item.quantity }}</strong></td>
+                                        <td class="cart-product-total"><span class="amount">{{ item.total }}</span></td>
+                                    </tr>
+                                {% empty %}
+                                    <tr><td colspan="4">No items in the cart.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr class="cart-subtotal">
+                                    <th>Cart Subtotal</th>
+                                    <td><span class="amount">Ksh. {{ checkout_data.total }}</span></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div> 
+                    <div class="payment-method">
+                        <div class="payment-accordion">
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="#payment-1">
+                                        <h5 class="panel-title">
+                                            <a href="javascript:void(0)" class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                M-Pesa
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Make your payment through your M-Pesa account. This can either
+                                                be through the Buy Goods And Services Till number or You input 
+                                                your M-Pesa number and a prompt to pay will be sent to the number. 
+                                                Your order won’t be shipped until the funds have cleared in
+                                                our account.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const openFormButton = document.getElementById('openFormButton');
+      const formContainer = document.getElementById('formContainer');
+      const inputField1 = document.getElementById('inputField1');
+      const inputField2 = document.getElementById('inputField2');
+      const submitButton = document.getElementById('submitButton');
+  
+      // Set the width and height of open form button
+      openFormButton.style.width = '300px';
+      openFormButton.style.height = '50px';
+      openFormButton.style.backgroundColor = '#8CC63F';
+      openFormButton.style.color = 'white';
+      openFormButton.style.fontSize = '20px';
+  
+      openFormButton.addEventListener('click', () => {
+        if (formContainer.style.display === 'none') {
+          formContainer.style.display = 'block';
+        } else {
+          formContainer.style.display = 'none';
+        }
+  
+        // Set the width and height of input fields
+        inputField1.style.width = '300px';
+        inputField1.style.height = '30px';
+        inputField2.style.width = '300px';
+        inputField2.style.height = '30px';
+  
+        // Set the width and height of submit button
+        submitButton.style.width = '300px';
+        submitButton.style.height = '50px';
+        submitButton.style.fontSize = '20px';
+      });
+  
+      submitButton.addEventListener('click', () => {
+        // Handle form submission
+        const field1Value = inputField1.value;
+        const field2Value = inputField2.value;
+  
+        const confirmationMessage = `Do you want to pay for items in cart? \n    Amount: ${field1Value} \n    Phone: ${field2Value}`;
+  
+        const userConfirmation = window.confirm(confirmationMessage);
+  
+        if (userConfirmation) {
+            // Send STK Push request using AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '{% url "paymentdaraja:payment_index" %}?phone_number=' + field2Value + '&amount=' + field1Value);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                  const response = JSON.parse(xhr.responseText);
+              
+                  if (response.success) {
+                    // Show a pop-up message for STK Push sent
+                    alert('STK Push has been sent to your phone');
+              
+                    // Redirect to payment success page
+                    setTimeout(() => {
+                      window.location.href = '{% url "paymentdaraja:payment_success" %}';
+                    }, 2000); // Wait for 2 seconds before redirecting
+                  } else {
+                    // Show an error message
+                    alert('Error: ' + response.error);
+                  }
+                } else {
+                  console.log('Error: ' + xhr.statusText);
+                }
+              };
+              
+            xhr.send();
+          } else {
+            // Cancel the payment
+            console.log('Payment cancelled');
+          }
+      
+          // Reset the form fields
+          inputField1.value = '';
+          inputField2.value = '';
+        });
+      });
+  </script>
+
+{% endblock %}
