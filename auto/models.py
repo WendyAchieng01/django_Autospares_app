@@ -6,7 +6,7 @@ from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from PIL import Image
+
 
 # Create your models here.
 
@@ -63,8 +63,8 @@ class Product(models.Model):
 @receiver(pre_save, sender=Product)
 def resize_product_image(sender, instance, **kwargs):
     if instance.img:
-        image = Image.open(instance.img)  # Use Image instead of ImageField
-
+        image = ImageField.open(instance.img)
+        
         # Convert RGBA to RGB if needed
         if image.mode == 'RGBA':
             image = image.convert('RGB')
