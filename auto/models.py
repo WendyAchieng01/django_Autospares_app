@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
-from phonenumber_field.modelfields import PhoneNumberField
 from django.core.exceptions import ValidationError
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
@@ -102,7 +101,7 @@ class ShippingAddress(models.Model):
     county = models.CharField(max_length=200, null=True, default='')
     zipcode = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
-    phonenumber = PhoneNumberField(default=None)
+    phonenumber = models.CharField(max_length=20)
     note = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 
