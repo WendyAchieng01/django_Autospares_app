@@ -14,7 +14,7 @@ class AccessToken(models.Model):
 		return self.token
 	
 class Transaction(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='transactions')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, related_name='transactions')
     phone_number = models.CharField(max_length=12)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     mpesa_receipt_number = models.CharField(max_length=50)
