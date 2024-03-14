@@ -1,10 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.forms import ValidationError
+from django.forms import ImageField, ValidationError
 from django.core.exceptions import ValidationError
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
-from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
@@ -63,7 +62,7 @@ class Product(models.Model):
 @receiver(pre_save, sender=Product)
 def resize_product_image(sender, instance, **kwargs):
     if instance.img:
-        image = Image.open(instance.img)
+        image = ImageField.open(instance.img)
         
         # Convert RGBA to RGB if needed
         if image.mode == 'RGBA':
