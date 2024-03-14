@@ -1,84 +1,81 @@
 {% extends 'base.html' %}
 
 {% load static %}
+
 {% block title %}Category - Roren{% endblock %}
+
 {% block content %}
-
-        <!-- Begin Roren's Breadcrumb Area -->
-        <div class="breadcrumb-area">
-            <div class="container">
-                <div class="breadcrumb-content">
-                    <h2>Shop</h2>
-                    <ul>
-                        <li><a href="{% url 'index' %}">Home</a></li>
-                        <li class="active">Shop </li>
-                    </ul>
-                </div>
-            </div>
+<!-- Begin Roren's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Shop</h2>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li class="active">Shop</li>
+            </ul>
         </div>
-        <!-- Roren's Breadcrumb Area End Here -->
+    </div>
+</div>
+<!-- Roren's Breadcrumb Area End Here -->
 
-        <!-- Begin Roren's Shop Left Sidebar Area -->
-        <div class="shop-content_wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-5 order-2 order-lg-1 order-md-1">
-                        <div class="uren-sidebar-catagories_area">
-                            <div class="category-module uren-sidebar_categories">
-                                <div class="category-module_heading">
-                                    <h5>Accessories</h5>
-                                </div>
-                                <div class="module-body">
-                                    <ul class="module-list_item">
-                                        {% for accessory in accessories %}
-                                            <li>
-                                                <a href="{% url 'accessoriespage' accessories_id=accessory.id %}">
-                                                    <strong>{{ accessory.name }}</strong><br>
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        <div class="sidebar-banner_area">
-                            <div class="banner-item img-hover_effect">
-                                <a href="javascript:void(0)">
-                                    <img src="{% static 'images/shop/1.jpg' %}" alt="Roren's Shop Banner Image">
-                                </a>
-                            </div>
+<!-- Begin Roren's Shop Left Sidebar Area -->
+<div class="shop-content_wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-5 order-2 order-lg-1 order-md-1">
+                <div class="uren-sidebar-catagories_area">
+                    <div class="category-module uren-sidebar_categories">
+                        <div class="category-module_heading">
+                            <h5>Accessories</h5>
                         </div>
-                    </div>
-                    <div class="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">
-                        
-                        <center>
-
-                        <h1>{{ category.name }} Products</h1>
-
-                        </center>
-
-                        <!-- Display Filtered Products -->
-                        <div class="container my-5">
-                            <div class="row">
-                                {% for prod in prods %}
-                                <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
-                                    <div class="product-slide_item">
-                                        <!-- Product content goes here -->
-                                        <a href="{% url 'singleproduct' prod.id %}">
-                                            <img class="primary-img" src="{{prod.img.url}}" alt="Roren's Product Image">
-                                            <h3>{{ prod.name }}</h3>
-                                            <p>{{ prod.desc }}</p>
-                                            <p>Price: Ksh. {{ prod.price }}</p>
-                                        </a>
-                                        <!-- Other product details like name, price, description, etc. -->
-                                    </div>
-                                </div>
+                        <div class="module-body">
+                            <ul class="module-list_item">
+                                {% for accessory in accessories %}
+                                <li>
+                                    <a href="{% url 'accessoriespage' accessories_id=accessory.id %}">
+                                        <strong>{{ accessory.name }}</strong><br>
+                                    </a>
+                                </li>
                                 {% endfor %}
-                            </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-banner_area">
+                        <div class="banner-item img-hover_effect">
+                            <a href="javascript:void(0)">
+                                <img src="{% static 'images/shop/1.jpg' %}" alt="Roren's Shop Banner Image">
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">
+                <center>
+                    <h1>{{ category.name }} Products</h1>
+                </center>
+                <!-- Display Filtered Products -->
+                <div class="container my-5">
+                    <div class="row">
+                        {% for prod in prods %}
+                        <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                            <div class="product-slide_item">
+                                <!-- Product content goes here -->
+                                <a href="{% url 'singleproduct' prod.id %}">
+                                    <img class="primary-img" src="{{prod.img.url}}" alt="Roren's Product Image">
+                                    <h3>{{ prod.name }}</h3>
+                                    <p>{{ prod.desc }}</p>
+                                    <p>Price: Ksh. {{ prod.price }}</p>
+                                </a>
+                                <!-- Other product details like name, price, description, etc. -->
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
-
-
+    </div>
+</div>
+<!-- End Roren's Shop Left Sidebar Area -->
 {% endblock %}
