@@ -135,13 +135,14 @@
                                         {% url 'specials' as specials_url %}
                                         <li class="{% if request.path == specials_url %}active{% endif %}"><a href="{{ specials_url }}">Specials</a></li>
                                         {% url 'about' as about_url %}
-                                        <li class="{% if request.path == about_url %}active{% endif %}"><a href="{{ about_url}}">About Us</a></li>
+                                        <li class="{% if request.path == about_url %}active{% endif %}"><a href="{{ about_url }}">About Us</a></li>
                                         {% url 'contact' as contact_url %}
-                                        <li class="{% if request.path == contact_url %}active{% endif %}"><a href="{{ contact_url}}">Contact</a></li>
+                                        <li class="{% if request.path == contact_url %}active{% endif %}"><a href="{{ contact_url }}">Contact</a></li>
                                         {% url 'faq' as faq_url %}
                                         <li class="{% if request.path == faq_url %}active{% endif %}"><a href="{{ faq_url }}">FAQ</a></li>
                                     </ul>
                                 </nav>
+                                
                             </div>
                         </div>
                         <div class="custom-setting_col col-12 d-none d-lg-block">
