@@ -4514,6 +4514,49 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .price-filter 
   border-right: 0;
 }
 
+/* Default styles */
+.uren-brand_area .product-slider .slide-item {
+  display: inline-block;
+  width: 16.66%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Styles for devices with a maximum width of 1500px */
+@media (max-width: 1500px) {
+  .uren-brand_area .product-slider .slide-item {
+    width: 25%;
+  }
+}
+
+/* Styles for devices with a maximum width of 1199px */
+@media (max-width: 1199px) {
+  .uren-brand_area .product-slider .slide-item {
+    width: 33.33%;
+  }
+}
+
+/* Styles for devices with a maximum width of 991px */
+@media (max-width: 991px) {
+  .uren-brand_area .product-slider .slide-item {
+    width: 50%;
+  }
+}
+
+/* Styles for devices with a maximum width of 767px */
+@media (max-width: 767px) {
+  .uren-brand_area .product-slider .slide-item {
+    width: 100%;
+  }
+}
+
+/* Styles for devices with a maximum width of 480px */
+@media (max-width: 480px) {
+  .uren-brand_area .product-slider .slide-item {
+    width: 100%;
+  }
+}
+
 /*----------------------------------------*/
 /*  22 - Components - Breadcrumb
 /*----------------------------------------*/
@@ -4751,7 +4794,41 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .price-filter 
   padding-left: 0;
   width: 100%;
 }
+/* Default styles */
+.slideshow table td {
+  display: inline-block;
+  width: 16.66%;
+  padding: 10px;
+  box-sizing: border-box;
+}
 
+/* Styles for devices with a maximum width of 1199px */
+@media (max-width: 1199px) {
+  .slideshow table td {
+    width: 25%;
+  }
+}
+
+/* Styles for devices with a maximum width of 991px */
+@media (max-width: 991px) {
+  .slideshow table td {
+    width: 33.33%;
+  }
+}
+
+/* Styles for devices with a maximum width of 767px */
+@media (max-width: 767px) {
+  .slideshow table td {
+    width: 50%;
+  }
+}
+
+/* Styles for devices with a maximum width of 575px */
+@media (max-width: 575px) {
+  .slideshow table td {
+    width: 100%;
+  }
+}
 /*-------------------------------------------*/
 /*  25 - Components - Slider Navigation
 /*-------------------------------------------*/

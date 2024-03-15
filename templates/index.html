@@ -102,52 +102,52 @@
         <!-- Begin Featured Categories Area -->
         <div class="featured-categories_area featured-categories_area-2">
             <div class="container-fluid">
-                <div class="section-title_area">
-                    <span>Top Featured Collections</span>
-                    <h3>Featured Categories</h3>
-                </div>
-                <div class="slideshow">
-                    <table>
-                        <tbody>
-                            <tr>
-                                {% for cat in categories %}
-                                    {% if forloop.counter <= 6 %}
-                                        <td>
-                                            <div class="slide-image_area">
-                                                <a href="{% url 'categorypage' category_id=cat.id %}">
-                                                    <img src="{{cat.img.url}}" alt="{{ cat.name }} Image">
-                                                </a>
-                                            </div>
-                                            <div class="slide-content_area">
-                                                <h3><a href="{% url 'categorypage' category_id=cat.id %}">{{ cat.name }}</a></h3>
-                                                <span>({{ cat.product_count }} Products)</span>
-                                            </div>
-                                        </td>
-                                    {% endif %}
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                {% for cat in categories %}
-                                    {% if forloop.counter > 6 and forloop.counter <= 12 %}
-                                        <td>
-                                            <div class="slide-image_area">
-                                                <a href="{% url 'categorypage' category_id=cat.id %}">
-                                                    <img src="{{cat.img.url}}" alt="{{ cat.name }} Image">
-                                                </a>
-                                            </div>
-                                            <div class="slide-content_area">
-                                                <h3><a href="{% url 'categorypage' category_id=cat.id %}">{{ cat.name }}</a></h3>
-                                                <span>({{ cat.product_count }} Products)</span>
-                                            </div>
-                                        </td>
-                                    {% endif %}
-                                {% endfor %}
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+              <div class="section-title_area">
+                <span>Top Featured Collections</span>
+                <h3>Featured Categories</h3>
+              </div>
+              <div class="slideshow">
+                <table>
+                  <tbody>
+                    <tr>
+                      {% for cat in categories %}
+                      {% if forloop.counter <= 6 %}
+                      <td>
+                        <div class="slide-image_area">
+                          <a href="{% url 'categorypage' category_id=cat.id %}">
+                            <img src="{{cat.img.url}}" alt="{{ cat.name }} Image">
+                          </a>
+                        </div>
+                        <div class="slide-content_area">
+                          <h3><a href="{% url 'categorypage' category_id=cat.id %}">{{ cat.name }}</a></h3>
+                          <span>({{ cat.product_count }} Products)</span>
+                        </div>
+                      </td>
+                      {% endif %}
+                      {% endfor %}
+                    </tr>
+                    <tr>
+                      {% for cat in categories %}
+                      {% if forloop.counter > 6 and forloop.counter <= 12 %}
+                      <td>
+                        <div class="slide-image_area">
+                          <a href="{% url 'categorypage' category_id=cat.id %}">
+                            <img src="{{cat.img.url}}" alt="{{ cat.name }} Image">
+                          </a>
+                        </div>
+                        <div class="slide-content_area">
+                          <h3><a href="{% url 'categorypage' category_id=cat.id %}">{{ cat.name }}</a></h3>
+                          <span>({{ cat.product_count }} Products)</span>
+                        </div>
+                      </td>
+                      {% endif %}
+                      {% endfor %}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-        </div>
+          </div>
         <!-- Featured Categories Area End Here -->
 
        
